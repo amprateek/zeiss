@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,31 +6,20 @@ using System.Threading.Tasks;
 
 namespace Zeiss.DataAccess
 {
-    public class PayDA
+    public class CustomerDA
     {
-        public int GetBasicPay(string empID, Int16 month, Int16 year)
-        {
-            //connect to database
-            //execute stored procedure/query
-            //get Basic pay
-            //close connection
-            return 20000; //Basic pay
-        }
-    }
-    public class EmployeeDA
-    {
-        public string empID;
         public string firstName;
         public string lastName;
         public string DOJ;
+        public long mobile;
 
-        public EmployeeDA GetEmployeeDetails(string empID)
+        public CustomerDA GetCustomerDetails(long mobile)
         {
-            EmployeeDA emp = new EmployeeDA();
-            emp.firstName = "Ram";
-            emp.lastName = "Raj";
-            emp.DOJ = "25-07-22";
-            return emp;
+            CustomerDA cust = new CustomerDA();
+            cust.firstName = "Ram";
+            cust.lastName = "Raj";
+            cust.DOB = "25-07-22";
+            return cust;
         }
     }
 }

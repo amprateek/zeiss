@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,37 +9,21 @@ namespace Zeiss.PaySlip
 { 
     public class PaySlip
     {
-        string empID;
-        string empFirstName;
-        string empLastName;
-        string department;
-        DateTime DOJ;
-        string month;
-        short year;
-        int basicPay;
-        int DA;
-        int HRA;
-        int LTA;
-        int PF;
-        int profTax;
-        int incomeTax;
-        int loan;
+        string custFirstName;
+        string custLastName;
+        DateTime DOB;
+        long mobile;
 
-        public void PrintPaySlip(string empID, string month, short year)
+        public void PrintCustomerDetails(long mobile)
         {
-            Console.WriteLine("PaySlip for the month of " + month + " of the year " + year.ToString());
             Console.WriteLine("-----------------------");
-            Console.WriteLine("With Employee ID " + empID);
+            Console.WriteLine("Details of Customer with mobile number " + mobile);
             Console.WriteLine("-----------------------");
-            EmployeeBL emp = new EmployeeBL();
-            emp = emp.GetEmpDetails(empID);
-            Console.WriteLine("For the employee " + emp.firstName+ " " + emp.lastName);
+            CustomerBL cust = new CustomerBL();
+            cust = cust.GetCustDetails(mobile);
+            Console.WriteLine("Name :" + cust.firstName+ " " + cust.lastName);
             Console.WriteLine("-----------------------");
-            Console.WriteLine("Basic Pay " + emp.Basepay);
-            Console.WriteLine("-----------------------");
-            Console.WriteLine("House Rent Allowance " + emp.HRA);
-            Console.WriteLine("-----------------------");
-            Console.WriteLine("Dearness Allowance " + emp.DA);
+            Console.WriteLine("Date of Birth :" + cust.DOB);
             Console.WriteLine("-----------------------");
         }
     }

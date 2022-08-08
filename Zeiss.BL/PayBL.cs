@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,69 +7,26 @@ using Zeiss.DataAccess;
 
 namespace Zeiss.BL
 {
-    public class PayBL
+    public class CustomerBL
     {
-        public int GetBasicPay(string empID, Int16 month, Int16 year)
-        {
-            PayDA PayDa = new PayDA();
-            int basicPay = PayDa.GetBasicPay(empID, month, year);
-            return basicPay;
-        }
-        public int CalculateDA(string empID, Int16 month, Int16 year)
-        {
-            int basicPay = GetBasicPay(empID, month, year);
-            int da = 0;
-            if (basicPay > 25000)
-            {
-                da = basicPay * 30/100;
-            }
-            else
-            {
-                da = basicPay * 40/100;
-            }
-            return da;
-        }
-        public int CalculateHRA(string empID, Int16 month, Int16 year)
-        {
-            int basicPay = GetBasicPay(empID, month, year);
-            int hra = 0;
-            hra = basicPay * 15 / 100;
-            return hra;
-        }
-    }
-    public class EmployeeBL
-    {
-        public string empId;
         public string firstName;
         public string lastName;
-        public string DOJ;
-        public Int16 month;
-        public Int16 year;
-        public int Basepay;
-        public int DA;
-        public int HRA;
+        public string DOB;
+        public long mobile;
 
-        public EmployeeBL GetEmpDetails(string empID)
+
+        public CustomerBL GetCustDetails(string custID)
         {
-            EmployeeDA empD1 = new EmployeeDA();
-            empD1 = empD1.GetEmployeeDetails(empID);
+            CustomerDA custD1 = new CustomerDA();
+            custD1 = custD1.GetCustomerDetails(mobile);
 
-            PayBL Basic_pay = new PayBL();
-            Basepay = Basic_pay.GetBasicPay(empID, month, year);
-            DA = Basic_pay.CalculateDA(empID, month, year);
-            HRA = Basic_pay.CalculateHRA(empID, month, year);
+            CustomerBL custB1 = new CustomerBL();
+            custB1.custId = custD1.custID;
+            custB1.firstName = custD1.firstName;
+            custB1.lastName = custD1.lastName;
+            custB1.DOB = custD1.DOB;
 
-            EmployeeBL empB1 = new EmployeeBL();
-            empB1.empId = empD1.empID;
-            empB1.firstName = empD1.firstName;
-            empB1.lastName = empD1.lastName;
-            empB1.DOJ = empD1.DOJ;
-            empB1.Basepay = Basepay;
-            empB1.DA = DA;
-            empB1.HRA = HRA;
-
-            return empB1;
-
+            return custB1;
         }
     }
 }

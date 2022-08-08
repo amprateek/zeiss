@@ -1,5 +1,4 @@
-﻿using Zeiss.PaySlip;
+using Zeiss.PaySlip;
 
 Zeiss.PaySlip.PaySlip ps = new Zeiss.PaySlip.PaySlip();
-ps.PrintPaySlip("X6HSADUM","July",2022);
-    
+ps.PrintEmployeeDetails(9876543210);
